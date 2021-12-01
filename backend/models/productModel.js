@@ -3,15 +3,15 @@ import db from "../config/database.js";
 
 const { DataTypes } = Sequelize;
 
-const Product = db.define('products',{
-    title:{
+const Article = db.define('articles',{
+    author:{
         type: DataTypes.STRING
     },
-    price:{
-        type: DataTypes.DOUBLE
+    text:{
+        type: DataTypes.STRING
     }
 },{
     freezeTableName: true
 });
 
-export default Product;
+export default Article;

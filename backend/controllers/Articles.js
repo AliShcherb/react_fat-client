@@ -1,62 +1,62 @@
-import Product from "../models/productModel.js";
+import Article from "../models/productModel.js";
 
-export const getAllProducts = async (req, res) => {
+export const getAllArticles = async (req, res) => {
     try {
-        const products = await Product.findAll();
-        res.json(products);
+        const articles = await Article.findAll();
+        res.json(articles);
     } catch (error) {
         res.json({ message: error.message });
     }  
 }
 
-export const getProductById = async (req, res) => {
+export const getArticleById = async (req, res) => {
     try {
-        const product = await Product.findAll({
+        const article = await Article.findAll({
             where: {
                 id: req.params.id
             }
         });
-        res.json(product[0]);
+        res.json(article[0]);
     } catch (error) {
         res.json({ message: error.message });
     }  
 }
 
-export const createProduct = async (req, res) => {
+export const createArticle = async (req, res) => {
     try {
-        await Product.create(req.body);
+        await Article.create(req.body);
         res.json({
-            "message": "Product Created"
+            "message": "Article Created"
         });
     } catch (error) {
         res.json({ message: error.message });
     }  
 }
 
-export const updateProduct = async (req, res) => {
+export const updateArticle = async (req, res) => {
     try {
-        await Product.update(req.body, {
-            where: {
-                id: req.params.id
-            }
-        });
-        res.json({
-            "message": "Product Updated"
-        });
-    } catch (error) {
-        res.json({ message: error.message });
-    }  
-}
-
-export const deleteProduct = async (req, res) => {
-    try {
-        await Product.destroy({
+        await Article.update(req.body, {
             where: {
                 id: req.params.id
             }
         });
         res.json({
-            "message": "Product Deleted"
+            "message": "Article Updated"
+        });
+    } catch (error) {
+        res.json({ message: error.message });
+    }  
+}
+
+export const deleteArticle = async (req, res) => {
+    try {
+        await Article.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
+        res.json({
+            "message": "Article Deleted"
         });
     } catch (error) {
         res.json({ message: error.message });
